@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Todo.css'
 
 //importing componenets
 // import Item from "./components/Todo";
@@ -39,13 +39,12 @@ class App extends React.Component {
     })
   }
 
-  // addItem = (e, itemName) => {
-  //   e.preventDefault();
-  //   const newTask = {
-  //     task: itemName,
-  //     id: {(Math.random() * 4000)},
-  //   }
-  // }
+  clearCompleted = event => {
+    event.preventDefault();
+    this.setState({
+      todoList: this.state.todoList.filter(tasks => tasks.completed === false)
+    })
+  }
 
   addItem = (event, itemName) => {
     event.preventDefault();
@@ -66,6 +65,7 @@ class App extends React.Component {
         <TodoList 
           tasks={this.state.todoList}
           toggleItem={this.toggleItem}
+          clear={this.clearCompleted}
         />
         <ListForm addItem={this.addItem}/>
       </div>
