@@ -13,20 +13,26 @@ class ListForm extends React.Component {
         this.setState({itemName: event.target.value})
     }
 
-    handleClick = event => {
+
+    submitItem = event => {
         event.preventDefault();
-        
+        this.setState({itemName: ''});
+        this.props.addItem(event, this.state.itemName);
     }
 
     render() {
+        console.log("rendering...")
         return (
-            <form>
+            <form onSubmit={this.submitItem}>
                 <input 
                     type="text"
                     name="task"
+                    value={this.state.itemName}
                     onChange={this.handleChanges}
                 />
+                <button type="submit">Add Task</button>
             </form>
+            
         )
     }
 }
