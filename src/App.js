@@ -1,7 +1,15 @@
 import React from 'react';
 
-const toDo = [
-  
+//importing componenets
+// import Item from "./components/Todo";
+import TodoList from "./components/TodoList";
+
+const tasks = [
+  {
+    task: 'complete project',
+    id: '1',
+    completed: false
+  },
 ]
 
 class App extends React.Component {
@@ -11,12 +19,32 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.state = { todoList: toDo};
+    this.state = { todoList: tasks };
+  }
+
+  toggleItem = itemId => {
+    console.log(itemId);
+    this.setState({
+      todoList: this.state.todoList.map(item => {
+        if (itemId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        }
+        return item;
+      })
+    })
   }
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <h3>Here are your current tasks...<hr/></h3>
+        <TodoList 
+          tasks={this.state.todoList}
+          toggleItem={this.toggleItem}
+        />
       </div>
     );
   }
