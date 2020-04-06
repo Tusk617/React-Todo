@@ -3,6 +3,7 @@ import React from 'react';
 //importing componenets
 // import Item from "./components/Todo";
 import TodoList from "./components/TodoList";
+import ListForm from "./components/TodoForm";
 
 const tasks = [
   {
@@ -36,6 +37,10 @@ class App extends React.Component {
       })
     })
   }
+
+  addItem = itemName => {
+    this.setState=({todoList: tasks})
+  }
   render() {
     return (
       <div>
@@ -45,6 +50,7 @@ class App extends React.Component {
           tasks={this.state.todoList}
           toggleItem={this.toggleItem}
         />
+        <ListForm />
       </div>
     );
   }
