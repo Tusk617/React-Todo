@@ -59,7 +59,8 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="bodyContainer">
+        <div className="body">
         <h2>Welcome to your Todo App!</h2>
         <h3>Here are your current tasks...<hr/></h3>
         <TodoList 
@@ -68,6 +69,7 @@ class App extends React.Component {
           clear={this.clearCompleted}
         />
         <ListForm addItem={this.addItem}/>
+        </div>
       </div>
     );
   }
