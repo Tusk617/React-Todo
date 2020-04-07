@@ -1,0 +1,4 @@
+.item.completed {
+    background-color: orangered;
+    text-decoration: line-through;
+}
